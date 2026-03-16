@@ -1043,5 +1043,27 @@ function animateCounter(el,target,suffix='',duration=1800){
 }
 const statObserver=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
-    if(e.isIntersecting&&!e.target.dataset.animated){
-  
+    if(
+      e.target.dataset.animated='true';
+      const el=e.target.querySelector('.stat-num');
+      if(!el)return;
+      const text=el.textContent.trim();
+      if(text==='24/7'||text==='<3s')return;
+      if(text==='100%'){animateCounter(el,100,'%');return;}
+      if(text==='5'){animateCounter(el,5);return;}
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('.stat').forEach(s=>statObserver.observe(s));
+
+// ─── FIX : WHATSAPP FLOAT ──
+setTimeout(()=>{
+  const wa=document.getElementById('waFloat');
+  if(wa){
+    wa.style.transition='opacity 0.6s ease';
+    wa.style.opacity='1';
+  }
+},3000);
+</script>
+</body>
+</html>
