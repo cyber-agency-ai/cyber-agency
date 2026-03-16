@@ -946,7 +946,7 @@ document.querySelectorAll('a,button,input,textarea,select').forEach(el => {
 // ─── REVEAL ─────────────────────────────────────────────────────
 const obs = new IntersectionObserver(entries => entries.forEach(e => {
   if(e.isIntersecting) e.target.classList.add('visible');
-}),{threshold:0.08});
+}),{threshold:0.01,rootMargin:"0px 0px -50px 0px"});
 document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
 
 // ─── FAQ ─────────────────────────────────────────────────────────
@@ -1055,6 +1055,11 @@ const statObserver=new IntersectionObserver(entries=>{
   });
 },{threshold:0.5});
 document.querySelectorAll('.stat').forEach(s=>statObserver.observe(s));
+
+// ─── FALLBACK: force reveal all elements after 1s ──
+setTimeout(()=>{
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+},800);
 
 // ─── FIX : WHATSAPP FLOAT ──
 setTimeout(()=>{
